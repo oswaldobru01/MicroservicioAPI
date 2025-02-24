@@ -1,0 +1,1 @@
+﻿public record CreateProductDto(string Nombre, decimal Precio);
