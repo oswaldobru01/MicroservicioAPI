@@ -27,14 +27,14 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty;
 });
 
-app.MapPost("/Crear Productos", async (CreateProductDto dto, IMediator mediator) =>
+app.MapPost("/CrearProductos", async (CreateProductDto dto, IMediator mediator) =>
 {
     var command = new CreateProductCommand(dto.Nombre, dto.Precio);
     var productId = await mediator.Send(command);
     return Results.Ok(productId);
 });
 
-app.MapGet("/Obtener Productos", async (IMediator mediator) =>
+app.MapGet("/ObtenerProductos", async (IMediator mediator) =>
 {
     var products = await mediator.Send(new GetAllProductsQuery());
     return Results.Ok(products);
